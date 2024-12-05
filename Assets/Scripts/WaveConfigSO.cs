@@ -7,6 +7,9 @@ public class WaveConfigSO : ScriptableObject
     [SerializeField] List<GameObject> enemyPrefabs;
     [SerializeField] Transform pathPrefab;
     [SerializeField] float moveSpeed = 5f;
+    [SerializeField] float timeBetweenEnemySpawns = 1f;
+    [SerializeField] float spawnTimeVariance = 0f;
+    [SerializeField] float minimumSpawnTime = 0.2f;
 
     public Transform GetStartingWaypoint()
     {
@@ -36,6 +39,13 @@ public class WaveConfigSO : ScriptableObject
     public GameObject GetEnemyPrefab(int index)
     {
         return enemyPrefabs[index];
+    }
+
+    public float GetRandomSpawnTime()
+    {
+        float spawnTime = Random.Range(timeBetweenEnemySpawns - spawnTimeVariance,
+                                        timeBetweenEnemySpawns + spawnTimeVariance);
+        return Mathf.Clamp(spawnTime, minimumSpawnTime, float.MaxValue);
     }
 
 }
