@@ -5,7 +5,7 @@ using UnityEngine;
 public class Shooter : MonoBehaviour
 {
     [SerializeField] GameObject projectilePrefab;
-    [SerializeField] float projectileSpeed = 10f;
+    [SerializeField] float projectileSpeed = 8f;
     [SerializeField] float projectileLifeTime = 5f;
     [SerializeField] float firingRate = 0.2f;
     public bool isFiring;
